@@ -94,8 +94,8 @@ export function Chatbox() {
           Clear
         </Button>
       </div>
-      <div ref={scroller} className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
-        {messages.length === 0 ? (
+      {messages.length === 0 ? (
+        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
           <div className="rounded-xl bg-surface p-5 ring-1 ring-border">
             <p className="text-lg font-medium tracking-tight text-balance">Ask. Review. Sign.</p>
             <p className="mt-2 max-w-prose text-sm text-muted text-pretty">
@@ -116,7 +116,9 @@ export function Chatbox() {
               ))}
             </div>
           </div>
-        ) : null}
+        </div>
+      ) : (
+      <div ref={scroller} className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
         {messages.map((m) => (
           <article
             key={m.id}
@@ -140,6 +142,7 @@ export function Chatbox() {
           </div>
         ) : null}
       </div>
+      )}
       <form
         className="mt-3 flex items-end gap-2"
         onSubmit={(e) => {
